@@ -1,0 +1,31 @@
+﻿<Window x:Class="RandomVinGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandomVinGenerator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="463" Margin="0,-20,0,0" VerticalAlignment="Top" Width="14"/>
+        <ListBox x:Name="YearListBox" HorizontalAlignment="Left" Height="132" Margin="71,0,0,0" VerticalAlignment="Center" Width="98" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <ListBox x:Name="MakeListBox" HorizontalAlignment="Left" Height="128" Margin="220,0,0,0" VerticalAlignment="Center" Width="98" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Height="30" Margin="91,109,0,0" VerticalAlignment="Top" Width="58" HorizontalContentAlignment="Center" FontSize="16"/>
+        <Label x:Name="MakeLabel" Content="Make" HorizontalAlignment="Left" Height="30" Margin="227,109,0,0" VerticalAlignment="Top" Width="84" HorizontalContentAlignment="Center" FontSize="16"/>
+        <Button x:Name="GetVin" Content="Get Vin With Settings" HorizontalAlignment="Left" Height="26" Margin="129,325,0,0" VerticalAlignment="Top" Width="136" Click="GetVin_Click" />
+        <Button x:Name="RandomVin" Content="Just Give Me A VIN!" HorizontalAlignment="Left" Height="36" Margin="120,45,0,0" VerticalAlignment="Top" Width="154" Background="red" FontWeight="Bold" Click="RandomVin_Click"/>
+        <Label x:Name="VINResultVIN" Content="1FTFW1CV2AFB69781" HorizontalAlignment="Left" Height="40" Margin="423,73,0,0" VerticalAlignment="Top" Width="344" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="22"/>
+        <Button Content="Your Vin" HorizontalAlignment="Left" Height="33" Margin="555,35,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="YearCopyButton" Content="Year" HorizontalAlignment="Left" Height="28" Margin="431,170,0,0" VerticalAlignment="Top" Width="55"/>
+        <Button x:Name="MakeCopyButton" Content="Make" HorizontalAlignment="Left" Height="28" Margin="431,212,0,0" VerticalAlignment="Top" Width="55"/>
+        <Button x:Name="ModelCopyButton" Content="Model" HorizontalAlignment="Left" Height="28" Margin="431,253,0,0" VerticalAlignment="Top" Width="55"/>
+        <Button x:Name="MileageCopyButton" Content="Mileage" HorizontalAlignment="Left" Height="28" Margin="431,292,0,0" VerticalAlignment="Top" Width="55"/>
+        <Button x:Name="PriceCopyButton" Content="Price" HorizontalAlignment="Left" Height="28" Margin="431,329,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="YearResultLabel" Content="Label" HorizontalAlignment="Left" Height="28" Margin="518,171,0,0" VerticalAlignment="Top" Width="249"/>
+        <Label x:Name="MakeResultLabel" Content="Label" HorizontalAlignment="Left" Height="28" Margin="518,213,0,0" VerticalAlignment="Top" Width="241"/>
+        <Label x:Name="ModelResultLabel" Content="Label" HorizontalAlignment="Left" Height="28" Margin="518,253,0,0" VerticalAlignment="Top" Width="249"/>
+        <Label x:Name="MileageResultLabel" Content="Label" HorizontalAlignment="Left" Height="28" Margin="518,292,0,0" VerticalAlignment="Top" Width="249"/>
+        <Label x:Name="PriceResultLabel" Content="Label" HorizontalAlignment="Left" Height="28" Margin="518,329,0,0" VerticalAlignment="Top" Width="249"/>
+
+    </Grid>
+</Window>
