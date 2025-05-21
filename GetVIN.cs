@@ -8,5 +8,9 @@ namespace RandomVinGenerator
 {
     internal class GetVIN
     {
+        internal static void GetAutoInfo(string? year, string? make)
+        {
+
+        }
     }
 }

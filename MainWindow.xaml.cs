@@ -26,37 +26,12 @@ namespace RandomVinGenerator
             InitializeComponent();
             LoadIntoListBox(fileLocation);
         }
+        private readonly CarDataService _carDataService = new CarDataService();
+
         private void LoadIntoListBox(string filePath)
         {
-            LoadYearsIntoListBox();
-            LoadMakesIntoListBox(filePath);
-        }
-
-        private void LoadMakesIntoListBox(string filePath)
-        {
-            using (var reader = new StreamReader(filePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Context.RegisterClassMap<MakeOnlyMap>();
-
-                var listings = csv.GetRecords<MakeListing>().ToList();
-
-                var uniqueMakes = listings
-                    .Select(l => l.Make)
-                    .Where(b => !string.IsNullOrWhiteSpace(b))
-                    .Distinct()
-                    .OrderBy(b => b)
-                    .ToList();
-
-                MakeListBox.ItemsSource = uniqueMakes;
-            }
-           
-        }
-
-        private void LoadYearsIntoListBox()
-        {
-            List<int> years = Enumerable.Range(2005, 18).ToList();
-            YearListBox.ItemsSource = years;
+            YearListBox.ItemsSource = _carDataService.LoadYears();
+            MakeListBox.ItemsSource = _carDataService.LoadUniqueMakes(filePath);
         }
 
         private void RandomVin_Click(object sender, RoutedEventArgs e)
