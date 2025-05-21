@@ -19,7 +19,8 @@ namespace RandomVinGenerator
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string fileLocation =  System.IO.Path.GetFullPath(@"data\USA_cars_datasets.csv");
+        public string fileLocation = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\data\USA_cars_datasets.csv");
+
         public MainWindow()
         {
             InitializeComponent();
