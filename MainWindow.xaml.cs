@@ -50,6 +50,7 @@ namespace RandomVinGenerator
 
                 MakeListBox.ItemsSource = uniqueMakes;
             }
+           
         }
 
         private void LoadYearsIntoListBox()
