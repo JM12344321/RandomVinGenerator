@@ -19,11 +19,11 @@ namespace RandomVinGenerator
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public string fileLocation =  System.IO.Path.GetFullPath(@"data\USA_cars_datasets.csv");
+        public string fileLocation =  System.IO.Path.GetFullPath(@"data\USA_cars_datasets.csv");
         public MainWindow()
         {
             InitializeComponent();
-            LoadIntoListBox("D:\\VSTS\\source\\RandomVinGenerator\\data\\USA_cars_datasets.csv");
+            LoadIntoListBox(fileLocation);
         }
         private void LoadIntoListBox(string filePath)
         {
