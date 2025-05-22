@@ -73,12 +73,12 @@ namespace RandomVinGenerator
 
             SetLabels(new Dictionary<string, string>
             {
-                ["VIN"] = entry.VIN.ToUpperInvariant(),
-                ["Year"] = entry.Year.ToString(),
-                ["Make"] = entry.Make,
-                ["Model"] = entry.Model,
-                ["Mileage"] = $"{entry.Mileage:N0}",
-                ["Price"] = $"{entry.Price:N0}"
+                ["VIN"] = entry.VIN.ToUpperInvariant().Replace(" ", ""),
+                ["Year"] = entry.Year.ToString().Replace(" ", ""),
+                ["Make"] = entry.Make.Replace(" ", ""),
+                ["Model"] = entry.Model.Replace(" ", ""),
+                ["Mileage"] = $"{entry.Mileage:N0}".Replace(" ", ""),
+                ["Price"] = $"{entry.Price:N0}".Replace(" ", "")
             });
         }
 

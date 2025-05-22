@@ -30,29 +30,35 @@ namespace RandomVinGenerator
 
         public ProcessAutoData? GetRandomAuto(string? year, string? make)
         {
+            if (_autoData.Count == 0) return null;
+
             var random = new Random();
 
-            bool isYearBlank = string.IsNullOrWhiteSpace(year);
-            bool isMakeBlank = string.IsNullOrWhiteSpace(make);
+            bool hasYear = int.TryParse(year, out int parsedYear);
+            string? normalizedMake = string.IsNullOrWhiteSpace(make) ? null : make.Trim();
 
-            if (isYearBlank && isMakeBlank)
+            if (!hasYear && normalizedMake == null)
             {
-                return _autoData.Count == 0 ? null : _autoData[random.Next(_autoData.Count)];
+                // Fully random
+                return _autoData[random.Next(_autoData.Count)];
             }
 
-            int targetYear = isYearBlank ? random.Next(2005, 2023) : int.TryParse(year, out int y) ? y : 0;
-            string? targetMake = isMakeBlank
-                ? _autoData.Select(a => a.Make).Distinct().OrderBy(_ => Guid.NewGuid()).FirstOrDefault()
-                : make;
+            int targetYear = hasYear ? parsedYear : random.Next(2005, 2023);
 
-            var matching = _autoData
-                .Where(a =>
-                    a.Year == targetYear &&
-                    string.Equals(a.Make, targetMake, StringComparison.OrdinalIgnoreCase))
+            string targetMake = normalizedMake ?? _autoData
+                .Select(a => a.Make)
+                .Where(m => !string.IsNullOrWhiteSpace(m))
+                .Distinct()
+                .OrderBy(_ => Guid.NewGuid())
+                .First();
+
+            var filtered = _autoData
+                .Where(a => a.Year == targetYear &&
+                            string.Equals(a.Make, targetMake, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
-            return matching.Any() ? matching[random.Next(matching.Count)] : null;
+            return filtered.Count == 0 ? null : filtered[random.Next(filtered.Count)];
         }
-        
+
     }
 }
