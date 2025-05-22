@@ -39,7 +39,6 @@ namespace RandomVinGenerator
 
             if (!hasYear && normalizedMake == null)
             {
-                // Fully random
                 return _autoData[random.Next(_autoData.Count)];
             }
 
