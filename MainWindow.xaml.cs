@@ -77,8 +77,8 @@ namespace RandomVinGenerator
                 ["Year"] = entry.Year.ToString().Replace(" ", ""),
                 ["Make"] = entry.Make.Replace(" ", ""),
                 ["Model"] = entry.Model.Replace(" ", ""),
-                ["Mileage"] = $"{entry.Mileage:N0}".Replace(" ", ""),
-                ["Price"] = $"{entry.Price:N0}".Replace(" ", "")
+                ["Mileage"] = $"{entry.Mileage:N0}".Replace(" ", "").Replace(",", ""),
+                ["Price"] = $"{entry.Price:N0}".Replace(" ", "").Replace(",", "")
             });
         }
 
@@ -112,14 +112,14 @@ namespace RandomVinGenerator
             double.TryParse(mileageStr.Replace(",", ""), out double mileage))
             {
                 mileage += 10;
-                MileageResultLabel.Content = $"{mileage:N0}";
+                MileageResultLabel.Content = $"{mileage}";
             }
 
             if (PriceResultLabel.Content is string priceStr &&
                 decimal.TryParse(priceStr.Replace(",", ""), out decimal price))
             {
                 price += 10;
-                PriceResultLabel.Content = $"{price:N0}";
+                PriceResultLabel.Content = $"{price}";
             }
         }
     }
